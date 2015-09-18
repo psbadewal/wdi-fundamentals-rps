@@ -21,22 +21,39 @@ function randomPlay() {
 /*           Write Your Code Below            */
 ////////////////////////////////////////////////
 
+var playerMove;
+var computerMove;
+
 function getPlayerMove(move) {
     // Write an expression that operates on a variable called `move`
     // If a `move` has a value, your expression should evaluate to that value.
     // However, if `move` is not specified / is null, your expression should equal `getInput()`.
-    return move || getInput();
+  var move = getInput();
+    if (move === null) {
+        return getInput();
+}  else {
+        console.log("player chooses " + move);
+        playerMove = move;
+        getComputerMove();
+    } 
 }
 
 function getComputerMove(move) {
     // Write an expression that operates on a variable called `move`
     // If a `move` has a value, your expression should evaluate to that value.
     // However, if `move` is not specified / is null, your expression should equal `randomPlay()`.
-    return move || randomPlay();
+    var move = randomPlay(); 
+ if (move === null) {
+     return randomPlay();
+    } else {
+        console.log("computer chooses " + move);
+        computerMove = move;
+        getWinner(playerMove, computerMove);
+    }
 }
 
+var winner;
 function getWinner(playerMove,computerMove) {
-    var winner;
     // Write code that will set winner to either 'player', 'computer', or 'tie' based on the values of playerMove and computerMove.
     // Assume that the only values playerMove and computerMove can have are 'rock', 'paper', and 'scissors'.
     // The rules of the game are that 'rock' beats 'scissors', 'scissors' beats 'paper', and 'paper' beats 'rock'.
@@ -66,6 +83,10 @@ if (playerMove === computerMove) {
         }  else {
             winner = "player";
         }
+  } else {
+        getInput();
+    }
+    console.log(“The winner in this round is " + winner + " !");
     return winner;
 }
 
@@ -97,6 +118,7 @@ for (var i=0; i<25; i++) {
         }
     }
 }
-    return [playerWins, computerWins];
-}
+
+//Call function playToFive right at the top to make it all work
+//Adjustments are not original
 
